@@ -152,7 +152,7 @@ class EncoderDecoderModel:
                     hyp = hyp[:hyp.index('</s>')]
                     print("src : " + "".join(src_batch[source_cuont]).replace("</s>", ""))
                     print('hyp : ' +''.join(hyp))
-                    print(' '.join(hyp), file=fp)
+                    print(' '.join(hyp)) #, file=fp)
                     source_cuont = source_cuont + 1
 
                 generated += K
@@ -174,7 +174,7 @@ class EncoderDecoderModel:
             K = len(src_batch) - 1
 
         trace('epoch %3d/%3d, sample %8d' % (i_epoch + 1, self.epoch, trained + K + 1))
-        trace('  src = ' + ' '.join([x if x != '</s>' else '*' for x in src_batch[K]]))
+        # FIXME: trace('  src = ' + ' '.join([x if x != '</s>' else '*' for x in src_batch[K]]))
         trace('  trg = ' + ' '.join([x if x != '</s>' else '*' for x in trg_batch[K]]))
         trace('  hyp = ' + ' '.join([x if x != '</s>' else '*' for x in hyp_batch[K]]))
 

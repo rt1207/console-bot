@@ -33,9 +33,9 @@ class EncoderDecoder(Chain):
 
     def save_spec(self, filename):
         with open(filename, 'w') as fp:
-            print(self.vocab_size, file=fp)
-            print(self.embed_size, file=fp)
-            print(self.hidden_size, file=fp)
+            print(self.vocab_size ) #, file=fp)
+            print(self.embed_size ) #, file=fp)
+            print(self.hidden_size) #, file=fp)
 
     @staticmethod
     def load_spec(filename):

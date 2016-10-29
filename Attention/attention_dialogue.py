@@ -87,9 +87,9 @@ class AttentionDialogue(Chain):
         Separate save because it is easy to change the each load spec
         """
         with open(filename, 'w') as fp:
-            print(self.vocab_size, file=fp)
-            print(self.embed_size, file=fp)
-            print(self.hidden_size, file=fp)
+            print(self.vocab_size ) #, file=fp)
+            print(self.embed_size ) #, file=fp)
+            print(self.hidden_size) #, file=fp)
 
     @staticmethod
     def load_spec(filename, XP):

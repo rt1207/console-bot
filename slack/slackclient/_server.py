@@ -4,7 +4,7 @@ from slackclient._user import User
 from slackclient._util import SearchList
 from ssl import SSLError
 
-from websocket import create_connection
+# from websocket import create_connection
 import json
 
 

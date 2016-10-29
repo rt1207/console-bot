@@ -108,7 +108,7 @@ index2word = {}
 word2index = {}
 counts = collections.Counter()
 dataset = []
-with open(args.data, 'r', encoding='utf-8') as f:
+with open(args.data, 'r') as f:
     for line in f:
         for word in line.split():
             if word not in word2index:

@@ -1,6 +1,6 @@
 #'!/usr/bin/env python
 #-*- coding:utf-8 -*-
-#!/usr/bin/python3
+# !/usr/bin/python3
 
 import sys
 import os
@@ -12,6 +12,7 @@ from chainer import link
 import util.generators as gens
 from util.functions import trace, fill_batch
 from util.vocabulary import Vocabulary
+import Attention
 from Attention.attention_dialogue import AttentionDialogue
 import random
 from util.XP import XP
@@ -182,7 +183,7 @@ class EncoderDecoderModelAttention:
                     hyp = hyp[:hyp.index('</s>')]
                     print("src : " + "".join(src_batch[source_cuont]).replace("</s>", ""))
                     print('hyp : ' +''.join(hyp))
-                    print(' '.join(hyp), file=fp)
+                    print(' '.join(hyp)) #, file=fp)
                     source_cuont = source_cuont + 1
 
                 generated += K
