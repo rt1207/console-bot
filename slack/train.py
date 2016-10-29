@@ -14,7 +14,6 @@ from util.vocabulary import Vocabulary
 import MeCab
 from util.XP import XP
 
-
 class SlackApp():
     """
     Slack Call app
@@ -54,9 +53,7 @@ class SlackApp():
                 hyp_batch = self.__predict_sentence(src_batch)
                 # show predict word
                 word = ''.join(hyp_batch[0]).replace("</s>", "")
-                print(src_batch)
-                print(hyp_batch)
-                print(word) # self.slack_channel.api_call("chat.postMessage", user=self.usr, channel=self.chan, text=word))
+                # self.slack_channel.api_call("chat.postMessage", user=self.usr, channel=self.chan, text=word))
             if "chainer_train" in self.data[0]["text"]:
                 self.__setting_parameter()
                 model = AttentionDialogue.load_spec(self.model_name + '.spec', self.XP)
@@ -70,7 +67,7 @@ class SlackApp():
         """
         return sentence for chainer predict
         """
-        text = self.__mecab_method('test')
+        text = self.__mecab_method('test: ユーザーの発話がはいります')
         data = [text]
         src_batch = [x + ["</s>"] * (self.generation_limit - len(x) + 1) for x in data]
         return src_batch
@@ -108,6 +105,8 @@ class SlackApp():
         return mecab_text.split(" ")
 
 if __name__ == '__main__':
+    print('こんにちは')
+    print('test')
     data_model = SlackModel()
     data_model.read_config()
     slack = SlackApp(data_model)

@@ -14,7 +14,6 @@ from EncoderDecoder import EncoderDecoder
 from util.Common_function import CommonFunction
 import random
 
-
 class EncoderDecoderModel:
 
     def __init__(self, parameter_dict):
