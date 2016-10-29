@@ -12,9 +12,9 @@ for line in f.readlines():
     data = json.load(f)
     for i in range(len(data["turns"])):
         if i % 2 == 1:
-            player_1.write(data["turns"][i]["utterance"] + "\n")
+            player_1.write(data["turns"][i]["utterance"].encode('utf8') + "\n")
         else:
             if i == 0:
                 print("pass")
             else: 
-                player_2.write(data["turns"][i]["utterance"] + "\n")
+                player_2.write(data["turns"][i]["utterance"].encode('utf8') + "\n")
