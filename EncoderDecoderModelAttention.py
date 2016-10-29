@@ -12,7 +12,6 @@ from chainer import link
 import util.generators as gens
 from util.functions import trace, fill_batch
 from util.vocabulary import Vocabulary
-import Attention
 from Attention.attention_dialogue import AttentionDialogue
 import random
 from util.XP import XP

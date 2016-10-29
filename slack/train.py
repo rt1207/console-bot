@@ -7,6 +7,7 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from EncoderDecoderModelAttention import EncoderDecoderModelAttention
+from EncoderDecoderModelForward import EncoderDecoderModelForward
 from Attention.attention_dialogue import AttentionDialogue
 from chainer import serializers
 from util.vocabulary import Vocabulary
@@ -44,9 +45,6 @@ class SlackApp():
         self.XP = XP
 
     def call_method(self):
-        self.__judge_print()
-
-    def __judge_print(self):
         if True: #len(self.data) >= 1 and "text" in self.data[0]:
             #print(self.data[0]["text"])
             if True: # "chainer:" in self.data[0]["text"]:
@@ -114,4 +112,3 @@ if __name__ == '__main__':
     data_model.read_config()
     slack = SlackApp(data_model)
     slack.call_method()
-    print('test')
