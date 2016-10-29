@@ -17,7 +17,7 @@ unit = 300
 vocab = 5000
 loss_func = SoftmaxCrossEntropyLoss(unit, vocab)
 w2v_model = SkipGram(vocab, unit, loss_func)
-serializers.load_hdf5("./word2vec/word2vec_chainer.model", w2v_model)
+# FIXME: serializers.load_hdf5("./word2vec/word2vec_chainer.model", w2v_model)
 
 
 class EncoderDecoderModelForward(EncoderDecoderModel):
@@ -118,5 +118,5 @@ parameter_dict["encdec"] = ""
 trace('initializing ...')
 
 encoderDecoderModel = EncoderDecoderModelForward(parameter_dict)
-# encoderDecoderModel.train()
+encoderDecoderModel.train()
 encoderDecoderModel.test()

@@ -70,7 +70,7 @@ class SlackApp():
         """
         return sentence for chainer predict
         """
-        text = self.__mecab_method('ユーザーの発話がはいります')
+        text = self.__mecab_method('test')
         data = [text]
         src_batch = [x + ["</s>"] * (self.generation_limit - len(x) + 1) for x in data]
         return src_batch
