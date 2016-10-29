@@ -44,9 +44,9 @@ class Vocabulary:
 
     def save(self, filename):
         with open(filename, 'w') as fp:
-            print(self.__size) #, file=fp)
+            print(self.__size, file=fp)
             for i in range(self.__size):
-                print(self.__itos[i]) #, file=fp)
+                print(self.__itos[i], file=fp)
 
     @staticmethod
     def load(filename):

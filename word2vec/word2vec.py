@@ -108,7 +108,7 @@ index2word = {}
 word2index = {}
 counts = collections.Counter()
 dataset = []
-with open(args.data, 'r') as f:
+with open(args.data, 'r', encoding='utf-8') as f:
     for line in f:
         for word in line.split():
             if word not in word2index:
@@ -185,4 +185,4 @@ with open('word2vec.model', 'w') as f:
     w = model.weight_xi.W.data
     for i in range(w.shape[0]):
         v =  ' '.join(['%f' % v for v in w[i]])
-        f.write('%s %s\n' % (index2word[i], v))
+        f.write('%s %s\n' % (index2word[i].encode('utf8'), v.encode('utf8')))

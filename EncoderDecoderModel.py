@@ -152,7 +152,7 @@ class EncoderDecoderModel:
                     hyp = hyp[:hyp.index('</s>')]
                     print("src : " + "".join(src_batch[source_cuont]).replace("</s>", ""))
                     print('hyp : ' +''.join(hyp))
-                    print(' '.join(hyp)) #, file=fp)
+                    print(' '.join(hyp), file=fp)
                     source_cuont = source_cuont + 1
 
                 generated += K

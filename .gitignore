@@ -11,7 +11,6 @@
 venv
 my_env/
 cv/
-data/
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
