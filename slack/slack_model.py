@@ -11,7 +11,7 @@ class SlackModel():
         :return:
         """
         self.Slack = namedtuple("Slack", ["api_token", "channel", "user", "mecab"])
-        self.config_file = "enviroment_slack.yml"
+        self.config_file = "./slack/environment_slack.yml"
         self.slack_channel = ""
         self.chan = ""
         self.user = ""
@@ -38,11 +38,11 @@ class SlackModel():
         """
         read config file for slack
         """
-        #with open(self.config_file) as cf: #, encoding="utf-8") as cf:
-        #   e = yaml.load(cf)
-        #   slack = self.Slack(e["slack"]["api_token"], e["slack"]["channel"],
-        #                      e["slack"]["user"], e["slack"]["mecab"])
-        #   self.slack_channel = SlackClient(slack.api_token)
-        #   self.chan = slack.channel
-        #   self.user = slack.user
-        #   self.mecab_dict = slack.mecab
+        with open(self.config_file) as cf: #, encoding="utf-8") as cf:
+           e = yaml.load(cf)
+           slack = self.Slack(e["slack"]["api_token"], e["slack"]["channel"],
+                              e["slack"]["user"], e["slack"]["mecab"])
+           self.slack_channel = SlackClient(slack.api_token)
+           self.chan = slack.channel
+           self.user = slack.user
+           self.mecab_dict = slack.mecab

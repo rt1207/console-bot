@@ -172,10 +172,10 @@ class EncoderDecoderModel:
         if K > len(src_batch) and K > len(trg_batch) and K > len(hyp_batch):
             K = len(src_batch) - 1
 
-        trace('epoch %3d/%3d, sample %8d' % (i_epoch + 1, self.epoch, trained + K + 1))
-        trace('  src = ' + ' '.join([x if x != '</s>' else '*' for x in src_batch[K]]))
-        trace('  trg = ' + ' '.join([x if x != '</s>' else '*' for x in trg_batch[K]]))
-        trace('  hyp = ' + ' '.join([x if x != '</s>' else '*' for x in hyp_batch[K]]))
+        #trace('epoch %3d/%3d, sample %8d' % (i_epoch + 1, self.epoch, trained + K + 1))
+        #trace('  src = ' + ' '.join([x if x != '</s>' else '*' for x in src_batch[K]]))
+        #trace('  trg = ' + ' '.join([x if x != '</s>' else '*' for x in trg_batch[K]]))
+        #trace('  hyp = ' + ' '.join([x if x != '</s>' else '*' for x in hyp_batch[K]]))
 
     def copy_model(self, src, dst, dec_flag=False):
         print("start copy")

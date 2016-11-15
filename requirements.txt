@@ -1,3 +1,4 @@
+chainer==1.5.0
 numpy==1.11.0
 ipython==4.2.0
 notebook==4.2.0

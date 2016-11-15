@@ -36,7 +36,7 @@ class SlackApp():
         self.chan = data_model.chan
         self.usr = data_model.user
         self.mecab_dict = data_model.mecab_dict
-        self.Mecab = MeCab.Tagger("-Owakati -d %s" % self.mecab_dict)
+        self.Mecab = MeCab.Tagger("-Owakati")
         XP.set_library(False, 0)
         self.XP = XP
 
@@ -110,9 +110,9 @@ class SlackApp():
         setteing each patamater
         """
         self.parameter["word2vec"] = self.model_name
-        train_path = "../twitter/"
-        self.parameter["source"] = train_path + "source_twitter_data.txt"
-        self.parameter["target"] = train_path + "replay_twitter_data.txt"
+        # train_path = "../twitter/"
+        # self.parameter["source"] = train_path + "source_twitter_data.txt"
+        # self.parameter["target"] = train_path + "replay_twitter_data.txt"
 
     def __mecab_method(self, text):
         """

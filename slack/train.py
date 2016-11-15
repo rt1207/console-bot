@@ -14,6 +14,10 @@ from util.vocabulary import Vocabulary
 import MeCab
 from util.XP import XP
 
+import six
+import numpy
+import re
+
 class SlackApp():
     """
     Slack Call app
@@ -49,10 +53,13 @@ class SlackApp():
             if True: # "chainer:" in self.data[0]["text"]:
                 # input sentence
                 src_batch = self.__input_sentence()
+                print(src_batch)
                 # predict
                 hyp_batch = self.__predict_sentence(src_batch)
+                print(hyp_batch)
                 # show predict word
                 word = ''.join(hyp_batch[0]).replace("</s>", "")
+                print(word)
                 # self.slack_channel.api_call("chat.postMessage", user=self.usr, channel=self.chan, text=word))
             if "chainer_train" in self.data[0]["text"]:
                 self.__setting_parameter()
@@ -82,7 +89,7 @@ class SlackApp():
         src_vocab = Vocabulary.load(self.model_name + '.srcvocab')
         trg_vocab = Vocabulary.load(self.model_name + '.trgvocab')
         model = AttentionDialogue.load_spec(self.model_name + '.spec', self.XP)
-        serializers.load_hdf5(self.model_name + '.weights', model)
+        # FIXME: serializers.load_hdf5(self.model_name + '.weights', model)
         hyp_batch = dialogue.forward_implement(src_batch, None, src_vocab, trg_vocab, model, False, self.generation_limit)
         return hyp_batch
 
@@ -105,9 +112,52 @@ class SlackApp():
         return mecab_text.split(" ")
 
 if __name__ == '__main__':
-    print('こんにちは')
-    print('test')
-    data_model = SlackModel()
-    data_model.read_config()
-    slack = SlackApp(data_model)
-    slack.call_method()
+    # data_model = SlackModel()
+    # data_model.read_config()
+    # slack = SlackApp(data_model)
+    # slack.call_method()
+
+    n_result = 5  # number of search result to show
+
+    with open('word2vec/word2vec.model', 'r') as f:
+    # with open('word2vec_chainer.model', 'r') as f:
+        ss = f.readline().split()
+        n_vocab, n_units = int(ss[0]), int(ss[1])
+        word2index = {}
+        index2word = {}
+        w = numpy.empty((n_vocab, n_units), dtype=numpy.float32)
+        for i, line in enumerate(f):
+            ss = line.split()
+            assert len(ss) == n_units + 1
+            word = ss[0]
+            word2index[word] = i
+            index2word[i] = word
+            # w[i] = numpy.array([float(s.translate(None, "'").translate(None, 'b')) for s in ss[1:]], dtype=numpy.float32)
+            w[i] = numpy.array([float(re.sub(r'\'|b', '', s)) for s in ss[1:]], dtype=numpy.float32)
+            # w[i] = numpy.array([float(s) for s in ss[1:]], dtype=numpy.float32)
+
+    s = numpy.sqrt((w * w).sum(1))
+    w /= s.reshape((s.shape[0], 1))  # normalize
+
+    try:
+        while True:
+            q = six.moves.input('>> ')
+            if q not in word2index:
+                print('"{0}" is not found'.format(q))
+                continue
+            v = w[word2index[q]]
+            similarity = w.dot(v)
+            print('query: {}'.format(q))
+            count = 0
+            for i in (-similarity).argsort():
+                if numpy.isnan(similarity[i]):
+                    continue
+                if index2word[i] == q:
+                    continue
+                print('{0}: {1}'.format(index2word[i], similarity[i]))
+                count += 1
+                if count == n_result:
+                    break
+
+    except EOFError:
+        pass
