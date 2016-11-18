@@ -60,7 +60,7 @@ twitter_data.db
 source_twitter_data.txt
 replay_twitter_data.txt
 cron/*
-ChainerDialogue*
+# ChainerDialogue*
 model_word_match/
 model_word_match/*
 Data/*
