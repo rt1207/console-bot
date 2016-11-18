@@ -118,5 +118,5 @@ parameter_dict["encdec"] = ""
 trace('initializing ...')
 
 encoderDecoderModel = EncoderDecoderModelForward(parameter_dict)
-encoderDecoderModel.train()
+# encoderDecoderModel.train()
 encoderDecoderModel.test()
