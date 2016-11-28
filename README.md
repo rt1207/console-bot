@@ -10,7 +10,6 @@ Wikipediaタイトルデータ：Data/jawiki-latest-random-titles-in-ns0, wordli
 ```
 
 ## 学習しているコーパス
-改善に苦戦しています…
 ```コーパス：Data/player_1.txt
 対応する発話：Data/player_2.txt
 -> 分かち書き：Data/player_1_wakati, Data/player_2_wakati
@@ -21,5 +20,5 @@ Wikipediaタイトルデータ：Data/jawiki-latest-random-titles-in-ns0, wordli
 ## 参考
 - Chainerで学習した対話用のボットをSlackで使用+Twitterから学習データを取得してファインチューニング
 http://qiita.com/GushiSnow/items/79ca7deeb976f50126d7
-- 簡易版
+- Chainer-Slack-Twitter-Dialogueを動かすまでに試行錯誤したメモ
 http://blog.cgfm.jp/garyu/archives/3385
