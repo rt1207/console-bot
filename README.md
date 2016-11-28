@@ -1,6 +1,7 @@
 
 #### コンソールで会話を行うコマンド
 `python EncoderDecoderModelForward.py`
+![screen shot 0028-11-28 at 6 57 35 pm](https://cloud.githubusercontent.com/assets/2739661/20663970/b0c85a1a-b59c-11e6-9dd9-bc450816b058.png)
 
 #### 単語リスト
 ```
