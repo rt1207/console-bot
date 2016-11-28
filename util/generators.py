@@ -1,3 +1,6 @@
+import MeCab
+import os
+
 def batch(generator, batch_size):
     """
     call the batch function
@@ -41,4 +44,27 @@ def letter_list(filename):
     with open(filename) as fp:
         for l in fp:
             yield list(''.join(l.split()))
+
+def input_file(filename):
+
+    mecab = MeCab.Tagger("-Owakati")
+
+    try:
+        src = input('> ')
+
+        if src == 'exit':
+            exit()
+        if src in ['rm', 'reset']:
+            os.remove(filename)
+
+        src = mecab.parse(src)
+
+    except Exception as e:
+        print(e.message)
+
+    f = open(filename, 'a+')
+    try:
+        f.write(src)
+    finally:
+        f.close()
 

@@ -1,6 +1,4 @@
-#!/usr/bin/env python
 #-*- coding:utf-8 -*-
-#!/usr/bin/python3
 """Sample script of word weight_xiding model.
 This code implements skip-gram model and continuous-bow model.
 Use ../ptb/download.py to download 'ptb.train.txt'.
@@ -23,7 +21,7 @@ from adam import Adam
 from variable import Variable
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--data', '-d', default="jawiki-latest-all-titles-in-ns0",
+parser.add_argument('--data', '-d', default="../Data/wordlist_programming", # jawiki-latest-all-titles-in-ns0",
                     help="input data")
 parser.add_argument('--unit', '-u', default=300, type=int,
                     help="number of units")
@@ -185,4 +183,4 @@ with open('word2vec.model', 'w') as f:
     w = model.weight_xi.W.data
     for i in range(w.shape[0]):
         v =  ' '.join(['%f' % v for v in w[i]])
-        f.write('%s %s\n' % (index2word[i].encode('utf8'), v.encode('utf8')))
+        f.write('%s %s\n' % (index2word[i], v))

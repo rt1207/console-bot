@@ -47,7 +47,6 @@ data
 data/*
 data_bk
 data_bk/*
-word2vec.model*
 test.txt
 requests-oauthlib
 *.yml
@@ -63,8 +62,6 @@ cron/*
 # ChainerDialogue*
 model_word_match/
 model_word_match/*
-Data/*
-Data
 data_word_match
 data_word_match/*
 #Mecab
@@ -78,3 +75,6 @@ mecab-ipadic-2.7.0-20070801/*
 data_latest
 *.json
 *.gz
+
+Data/player_*put
+result
