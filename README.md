@@ -1,16 +1,16 @@
 
-#### コンソールで会話を行うコマンド
-`python EncoderDecoderModelForward.py`
+## コンソールで会話
 ![screen shot 0028-11-28 at 6 57 35 pm](https://cloud.githubusercontent.com/assets/2739661/20663970/b0c85a1a-b59c-11e6-9dd9-bc450816b058.png)
 
-#### 単語リスト
+## 学習している単語リスト
 ```
 Wikipediaタイトルデータ：Data/jawiki-latest-random-titles-in-ns0, wordlist_programming
 -> モデル書き込み：word2vec/word2vec.py
 -> モデル読み込み：encdec/EncoderDecoderModelForward.py
 ```
 
-#### コーパス
+## 学習しているコーパス
+改善に苦戦しています…
 ```コーパス：Data/player_1.txt
 対応する発話：Data/player_2.txt
 -> 分かち書き：Data/player_1_wakati, Data/player_2_wakati
@@ -23,4 +23,3 @@ Wikipediaタイトルデータ：Data/jawiki-latest-random-titles-in-ns0, wordli
 http://qiita.com/GushiSnow/items/79ca7deeb976f50126d7
 - 簡易版
 http://blog.cgfm.jp/garyu/archives/3385
-
